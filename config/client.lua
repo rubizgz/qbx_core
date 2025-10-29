@@ -2,12 +2,12 @@ return {
     statusIntervalSeconds = 5, -- how often to check hunger/thirst status to remove health if 0.
     loadingModelsTimeout = 30000, -- Waiting time for ox_lib to load the models before throws an error, for low specs pc
 
-    pauseMapText = 'Powered by Qbox', -- Text shown above the map when ESC is pressed. If left empty 'FiveM' will appear
+    pauseMapText = 'Zaragoza RP', -- Text shown above the map when ESC is pressed. If left empty 'FiveM' will appear
 
     characters = {
         useExternalCharacters = false, -- Whether you have an external character management resource. (If true, disables the character management inside the core)
-        enableDeleteButton = true, -- Whether players should be able to delete characters themselves.
-        startingApartment = true, -- If set to false, skips apartment choice in the beginning (requires qbx_spawn if true)
+        enableDeleteButton = false, -- Whether players should be able to delete characters themselves.
+        startingApartment = false, -- If set to false, skips apartment choice in the beginning (requires qbx_spawn if true)
 
         dateFormat = 'YYYY-MM-DD',
         dateMin = '1900-01-01', -- Has to be in the same format as the dateFormat config
@@ -54,26 +54,26 @@ return {
     discord = {
         enabled = true, -- This will enable or disable the built in discord rich presence.
 
-        appId = '1024981890798731345', -- This is the Application ID (Replace this with you own)
+        appId = '1267420201444708462', -- This is the Application ID (Replace this with you own)
 
         largeIcon = { -- To set this up, visit https://forum.cfx.re/t/how-to-updated-discord-rich-presence-custom-image/157686
-            icon = 'duck', -- Here you will have to put the image name for the 'large' icon.
-            text = 'Qbox Ducky', -- Here you can add hover text for the 'large' icon.
+            icon = 'zaragoza_png', -- Here you will have to put the image name for the 'large' icon.
+            text = '', -- Here you can add hover text for the 'large' icon.
         },
 
         smallIcon = {
-            icon = 'logo_name', -- Here you will have to put the image name for the 'small' icon.
-            text = 'This is a small icon with text', -- Here you can add hover text for the 'small' icon.
+            icon = '', -- Here you will have to put the image name for the 'small' icon.
+            text = '', -- Here you can add hover text for the 'small' icon.
         },
 
         firstButton = {
-            text = 'Qbox Discord',
-            link = 'https://discord.gg/Z6Whda5hHA',
+            text = 'Conectarse',
+            link = '',
         },
 
         secondButton = {
-            text = 'Main Website',
-            link = 'https://www.qbox.re/',
+            text = 'Discord',
+            link = '',
         }
     },
 

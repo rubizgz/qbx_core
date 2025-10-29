@@ -381,7 +381,7 @@ function IsPlayerBanned(source)
     if os.time() < result.expire then
         local timeTable = os.date('*t', tonumber(result.expire))
 
-        return true, ('You have been banned from the server:\n%s\nYour ban expires in %s/%s/%s %s:%s\n'):format(result.reason, timeTable.day, timeTable.month, timeTable.year, timeTable.hour, timeTable.min)
+        return true, ('Has sido expulsado del servidor:\n%s\nTu expulsión expira en %s/%s/%s %s:%s\n'):format(result.reason, timeTable.day, timeTable.month, timeTable.year, timeTable.hour, timeTable.min)
     else
         CreateThread(function()
             if license2 then
@@ -401,7 +401,7 @@ exports('IsPlayerBanned', IsPlayerBanned)
 function Notify(source, text, notifyType, duration, subTitle, notifyPosition, notifyStyle, notifyIcon, notifyIconColor)
     local title, description
     if type(text) == 'table' then
-        title = text.text or 'Placeholder'
+        title = text.text or 'Zaragoza RP'
         description = text.caption or nil
     elseif subTitle then
         title = text
@@ -432,7 +432,7 @@ local function GetCoreVersion(InvokingResource)
     ---@diagnostic disable-next-line: missing-parameter
     local resourceVersion = GetResourceMetadata(cache.resource, 'version')
     if InvokingResource and InvokingResource ~= '' then
-        lib.print.debug(('%s called qbcore version check: %s'):format(InvokingResource or 'Unknown Resource', resourceVersion))
+        lib.print.debug(('%s llamó a la comprobación de versión de qbcore: %s'):format(InvokingResource or 'Recurso desconocido', resourceVersion))
     end
     return resourceVersion
 end
@@ -460,7 +460,7 @@ local function ExploitBan(playerId, origin)
         event = 'Anti-Cheat',
         color = 'red',
         tags = loggingConfig.role,
-        message = success and ('%s has been kicked and banned for exploiting %s'):format(name, origin) or ('%s has been kicked for exploiting %s, ban insert failed'):format(name, origin)
+        message = success and ('%s ha sido expulsado y baneado por explotar %s'):format(name, origin) or ('%s ha sido expulsado por explotar %s, error al insertar el baneo'):format(name, origin)
     })
 end
 

@@ -5,13 +5,13 @@ if GetConvar('qbx:enablequeue', 'true') == 'false' then return false end
 ---@param resource string
 AddEventHandler('onResourceStarting', function(resource)
     if resource == 'hardcap' then
-        lib.print.info('Preventing hardcap from starting...')
+        lib.print.info('Evitando que el recurso hardcap se inicie...')
         CancelEvent()
     end
 end)
 
 if GetResourceState('hardcap'):find('start') then
-    lib.print.info('Stopping hardcap...')
+    lib.print.info('Deteniendo el recurso hardcap...')
     StopResource('hardcap')
 end
 

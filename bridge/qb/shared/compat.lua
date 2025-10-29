@@ -93,8 +93,8 @@ return {
             SaveResourceFile('ox_inventory', 'data/items.lua', table.concat(file), -1)
             CreateThread(function()
                 Wait(1000)
-                print('^2[warning]^7 '..count..' items have been added to ox_inventory')
-                print('^2[warning]^7 You MUST restart the resource to load the new items.')
+                print('^2[Advertencia]^7 '..count..' artículos se han añadido a ox_inventory.')
+                print('^2[Advertencia]^7 Debe reiniciar el recurso para cargar los nuevos elementos.')
             end)
         end
     end

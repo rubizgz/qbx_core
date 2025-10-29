@@ -47,7 +47,7 @@ AddEventHandler('playerDropped', function(reason)
         webhook = loggingConfig.webhook['joinleave'],
         event = 'Dropped',
         color = 'red',
-        message = ('**%s** (%s) left...\n **Reason:** %s'):format(GetPlayerName(src), player.PlayerData.license, reason),
+        message = ('**%s** (%s) ha salido del servidor.\n **Motivo:** %s'):format(GetPlayerName(src), player.PlayerData.license, reason),
     })
     player.Functions.Save()
     QBX.Player_Buckets[player.PlayerData.license] = nil
@@ -197,7 +197,7 @@ end)
 RegisterNetEvent('QBCore:Server:CloseServer', function(reason)
     local src = source --[[@as Source]]
     if IsPlayerAceAllowed(src --[[@as string]], 'admin') then
-        reason = reason or 'No reason specified'
+        reason = reason or 'Sin motivo especificado.'
         serverConfig.closed = true
         serverConfig.closedReason = reason
         for k in pairs(QBX.Players) do

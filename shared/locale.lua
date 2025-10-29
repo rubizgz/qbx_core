@@ -104,7 +104,7 @@ function Locale:t(key, subs)
         -- At this point we know whether the phrase does not exist for this key
     else
         if self.warnOnMissing then
-            lib.print.warn(('Missing phrase for key: "%s"'):format(key))
+            lib.print.warn(('Frase faltante para la clave: "%s"'):format(key))
         end
         if self.fallback then
             return self.fallback:t(key, subs)

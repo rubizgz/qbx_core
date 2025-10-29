@@ -64,13 +64,13 @@ end
 ---@param source Source
 ---@param item string name
 function functions.UseItem(source, item) -- luacheck: ignore
-    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory is not compatible with qbx_core. use ox_inventory instead')
+    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory no es compatible con qbx_core. Utilice ox_inventory en su lugar')
 end
 
-local discordLink = GetConvar('qbx:discordlink', 'discord.gg/qbox')
+local discordLink = GetConvar('qbx:discordlink', 'discord.gg/YVcRQtKQxr')
 ---@deprecated use setKickReason or deferrals for connecting players, and the DropPlayer native directly otherwise
 functions.Kick = function(source, reason, setKickReason, deferrals)
-    reason = ('\n %s \n 🔸 Check our Discord for further information: %s'):format(reason, discordLink)
+    reason = ('\n %s \n 🔸 Visite nuestro Discord para obtener más información: %s'):format(reason, discordLink)
     if setKickReason then
         setKickReason(reason)
     end
@@ -137,7 +137,7 @@ functions.GetPlate = qbx.getVehiclePlate
 -- Single add item
 ---@deprecated incompatible with ox_inventory. Update ox_inventory item config instead.
 local function AddItem(itemName, item)
-    lib.print.warn(('%s invoked deprecated function AddItem. This is incompatible with ox_inventory'):format(GetInvokingResource() or 'unknown resource'))
+    lib.print.warn(('%s invocó una función obsoleta AddItem. Esto es incompatible con ox_inventory'):format(GetInvokingResource() or 'Recurso desconocido'))
     if type(itemName) ~= 'string' then
         return false, 'invalid_item_name'
     end
@@ -146,7 +146,7 @@ local function AddItem(itemName, item)
         return false, 'item_exists'
     end
 
-    lib.print.warn(('New item %s added but not found in ox_inventory. Printing item data'):format(itemName))
+    lib.print.warn(('Se ha añadido el artículo %s, pero no se encuentra en ox_inventory. Imprimiendo los datos del artículo'):format(itemName))
     lib.print.warn(item)
     qbCoreCompat.Shared.Items[itemName] = item
 
@@ -161,7 +161,7 @@ createQbExport('AddItem', AddItem)
 -- Single update item
 ---@deprecated incompatible with ox_inventory. Update ox_inventory item config instead.
 local function UpdateItem(itemName, item)
-    lib.print.warn(('%s invoked deprecated function UpdateItem. This is incompatible with ox_inventory'):format(GetInvokingResource() or 'unknown resource'))
+    lib.print.warn(('%s invocó una función obsoleta UpdateItem. Esto es incompatible con ox_inventory'):format(GetInvokingResource() or 'Recurso desconocido'))
     if type(itemName) ~= 'string' then
         return false, 'invalid_item_name'
     end
@@ -180,7 +180,7 @@ createQbExport('UpdateItem', UpdateItem)
 -- Multiple Add Items
 ---@deprecated incompatible with ox_inventory. Update ox_inventory item config instead.
 local function AddItems(items)
-    lib.print.warn(('%s invoked deprecated function AddItems. This is incompatible with ox_inventory'):format(GetInvokingResource() or 'unknown resource'))
+    lib.print.warn(('%s invocó una función obsoleta AddItems. Esto es incompatible con ox_inventory'):format(GetInvokingResource() or 'Recurso desconocido'))
     local shouldContinue = true
     local message = 'success'
     local errorItem = nil
@@ -199,7 +199,7 @@ local function AddItems(items)
             errorItem = items[key]
             break
         end
-        lib.print.warn(('New item %s added but not found in ox_inventory. Printing item data'):format(key))
+        lib.print.warn(('Se ha añadido el artículo %s, pero no se encuentra en ox_inventory. Imprimiendo los datos del artículo'):format(key))
         lib.print.warn(value)
 
         qbCoreCompat.Shared.Items[key] = value
@@ -217,7 +217,7 @@ createQbExport('AddItems', AddItems)
 -- Single Remove Item
 ---@deprecated incompatible with ox_inventory. Update ox_inventory item config instead.
 local function RemoveItem(itemName)
-    lib.print.warn(('%s invoked deprecated function RemoveItem. This is incompatible with ox_inventory'):format(GetInvokingResource() or 'unknown resource'))
+    lib.print.warn(('%s invocó una función obsoleta RemoveItem. Esto es incompatible con ox_inventory'):format(GetInvokingResource() or 'Recurso desconocido'))
     if type(itemName) ~= 'string' then
         return false, 'invalid_item_name'
     end
@@ -397,7 +397,7 @@ createQbExport('RemoveGang', RemoveGang)
 local function checkExistingMethod(method, methodName)
     local methodType = type(method)
     if methodType == 'function' then
-        local warnMessage = allowMethodOverrides and 'A resource is overriding method %s in player class. This can cause unexpected behavior. Disable this warning by setting convar qbx:disableoverridewarning to true' or 'A resource attempted to override method %s in player object and was blocked. Disable this warning by setting convar qbx:disableoverridewarning to true'
+        local warnMessage = allowMethodOverrides and 'Un recurso está sobrescribiendo el método %s en la clase del jugador. Esto puede provocar un comportamiento inesperado. Desactive esta advertencia configurando la variable de consola qbx:disableoverridewarning en true' or 'Se intentó sobreescribir el método %s del objeto del jugador y el recurso fue bloqueado. Desactive esta advertencia configurando la variable de consola qbx:disableoverridewarning en true'
         if not disableMethodOverrideWarning then
             lib.print.warn(warnMessage:format(methodName))
         end

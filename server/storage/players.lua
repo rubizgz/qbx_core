@@ -70,7 +70,7 @@ local function getBanId(request)
     elseif request.ip then
         return 'ip', request.ip
     else
-        error('no identifier provided', 2)
+        error('No se proporcionó ningún identificador', 2)
     end
 end
 
@@ -244,7 +244,7 @@ local function deletePlayer(citizenId)
                 }
             }
         else
-            warn(('Table %s does not exist in database, please remove it from qbx_core/config/server.lua or create the table'):format(tableName))
+            warn(('La tabla %s no existe en la base de datos, elimínela de qbx_core/config/server.lua o créela.'):format(tableName))
         end
     end
 
@@ -308,9 +308,9 @@ local function fetchPlayerGroups(citizenid)
         local group = groups[i]
         local validGroup = group.type == GroupType.JOB and GetJob(group.group) or GetGang(group.group)
         if not validGroup then
-            lib.print.warn(('Invalid group %s found in player_groups table, Does it exist in shared/%ss.lua?'):format(group.group, group.type))
+            lib.print.warn(('Se ha encontrado un grupo no válido %s en la tabla player_groups. ¿Existe en shared/%ss.lua?'):format(group.group, group.type))
         elseif not validGroup.grades?[group.grade] then
-            lib.print.warn(('Invalid grade %s found in player_groups table for %s %s, Does it exist in shared/%ss.lua?'):format(group.grade, group.type, group.group, group.type))
+            lib.print.warn(('Se ha encontrado una calificación no válida %s en la tabla player_groups para %s %s. ¿Existe en shared/%ss.lua?'):format(group.grade, group.type, group.group, group.type))
         elseif group.type == GroupType.JOB then
             jobs[group.group] = group.grade
         elseif group.type == GroupType.GANG then
@@ -349,7 +349,7 @@ end
 ---Copies player's primary job/gang to the player_groups table. Works for online/offline players.
 ---Idempotent
 RegisterCommand('convertjobs', function(source)
-    if source ~= 0 then return warn('This command can only be executed using the server console.') end
+    if source ~= 0 then return warn('Este comando solo se puede ejecutar mediante la consola del servidor.') end
 
     local players = MySQL.query.await('SELECT citizenid, JSON_VALUE(job, \'$.name\') AS jobName, JSON_VALUE(job, \'$.grade.level\') AS jobGrade, JSON_VALUE(gang, \'$.name\') AS gangName, JSON_VALUE(gang, \'$.grade.level\') AS gangGrade FROM players')
     for i = 1, #players do
@@ -360,7 +360,7 @@ RegisterCommand('convertjobs', function(source)
         if not success then lib.print.error(err) end
     end
 
-    lib.print.info('Converted jobs and gangs successfully')
+    lib.print.info('Se lograron convertir con éxito empleos y pandillas')
     TriggerEvent('qbx_core:server:jobsconverted')
 end, true)
 
@@ -372,18 +372,18 @@ local function cleanPlayerGroups()
         local validGroup = group.type == GroupType.JOB and GetJob(group.group) or GetGang(group.group)
         if not validGroup then
             MySQL.query.await('DELETE FROM player_groups WHERE `group` = ? AND type = ?', {group.group, group.type})
-            lib.print.info(('Remove invalid %s %s from player_groups table'):format(group.type, group.group))
+            lib.print.info(('Se eliminó el grupo inválido %s %s de la tabla player_groups'):format(group.type, group.group))
         elseif not validGroup.grades?[group.grade] then
             MySQL.query.await('DELETE FROM player_groups WHERE `group` = ? AND type = ? AND grade = ?', {group.group, group.type, group.grade})
-            lib.print.info(('Remove invalid %s %s grade %s from player_groups table'):format(group.type, group.group, group.grade))
+            lib.print.info(('Se eliminó el grupo %s %s con el grado no válido %s de la tabla player_groups'):format(group.type, group.group, group.grade))
         end
     end
 
-    lib.print.info('Removed invalid groups from player_groups table')
+    lib.print.info('Se eliminaron todos los grupos inválidos de la tabla player_groups')
 end
 
 RegisterCommand('cleanplayergroups', function(source)
-    if source ~= 0 then return warn('This command can only be executed using the server console.') end
+    if source ~= 0 then return warn('Este comando solo se puede ejecutar mediante la consola del servidor.') end
     cleanPlayerGroups()
 end, true)
 
@@ -391,7 +391,7 @@ CreateThread(function()
     for _, data in pairs(characterDataTables) do
         local tableName = data[1]
         if not doesTableExist(tableName) then
-            warn(('Table \'%s\' does not exist in database, please remove it from qbx_core/config/server.lua or create the table'):format(tableName))
+            warn(('La tabla \'%s\' no existe en la base de datos, elimínela de qbx_core/config/server.lua o créela.'):format(tableName))
         end
     end
     if GetConvar('qbx:cleanPlayerGroups', 'false') == 'true' then

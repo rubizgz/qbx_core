@@ -12,7 +12,7 @@ local positionConfig = require 'config.shared'.notifyPosition
 function Notify(text, notifyType, duration, subTitle, notifyPosition, notifyStyle, notifyIcon, notifyIconColor)
     local title, description
     if type(text) == 'table' then
-        title = text.text or 'Placeholder'
+        title = text.text or 'Zaragoza RP'
         description = text.caption or nil
     elseif subTitle then
         title = text

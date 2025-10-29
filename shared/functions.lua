@@ -84,7 +84,7 @@ function GetPlayerGroups(playerData)
         if not groups[gang] then
             groups[gang] = data
         else
-            lib.print.warn(('Duplicate group name %s found in player_groups table, check job and gang shared lua.'):format(gang))
+            lib.print.warn(('Se ha encontrado un nombre de grupo duplicado %s en la tabla player_groups; compruebe el trabajo y el archivo lua compartido de la banda.'):format(gang))
         end
     end
     return groups

@@ -2,10 +2,10 @@
 ---@type table<string, Gang>
 return {
     ['none'] = {
-        label = 'No Gang',
+        label = 'Sin pandillas',
         grades = {
             [0] = {
-                name = 'Unaffiliated'
+                name = 'No afiliado'
             },
         },
     },
@@ -13,16 +13,16 @@ return {
         label = 'The Lost MC',
         grades = {
             [0] = {
-                name = 'Recruit'
+                name = 'Menor'
             },
             [1] = {
-                name = 'Enforcer'
+                name = 'Sicario'
             },
             [2] = {
-                name = 'Shot Caller'
+                name = 'Narcotraficante'
             },
             [3] = {
-                name = 'Boss',
+                name = 'Líder',
                 isboss = true,
                 bankAuth = true
             },
@@ -32,16 +32,16 @@ return {
         label = 'Ballas',
         grades = {
             [0] = {
-                name = 'Recruit'
+                name = 'Menor'
             },
             [1] = {
-                name = 'Enforcer'
+                name = 'Sicario'
             },
             [2] = {
-                name = 'Shot Caller'
+                name = 'Narcotraficante'
             },
             [3] = {
-                name = 'Boss',
+                name = 'Líder',
                 isboss = true,
                 bankAuth = true
             },
@@ -51,16 +51,16 @@ return {
         label = 'Vagos',
         grades = {
             [0] = {
-                name = 'Recruit'
+                name = 'Menor'
             },
             [1] = {
-                name = 'Enforcer'
+                name = 'Sicario'
             },
             [2] = {
-                name = 'Shot Caller'
+                name = 'Narcotraficante'
             },
             [3] = {
-                name = 'Boss',
+                name = 'Líder',
                 isboss = true,
                 bankAuth = true
             },
@@ -70,16 +70,16 @@ return {
         label = 'Cartel',
         grades = {
             [0] = {
-                name = 'Recruit'
+                name = 'Menor'
             },
             [1] = {
-                name = 'Enforcer'
+                name = 'Sicario'
             },
             [2] = {
-                name = 'Shot Caller'
+                name = 'Narcotraficante'
             },
             [3] = {
-                name = 'Boss',
+                name = 'Líder',
                 isboss = true,
                 bankAuth = true
             },
@@ -89,16 +89,16 @@ return {
         label = 'Families',
         grades = {
             [0] = {
-                name = 'Recruit'
+                name = 'Menor'
             },
             [1] = {
-                name = 'Enforcer'
+                name = 'Sicario'
             },
             [2] = {
-                name = 'Shot Caller'
+                name = 'Narcotraficante'
             },
             [3] = {
-                name = 'Boss',
+                name = 'Líder',
                 isboss = true,
                 bankAuth = true
             },
@@ -108,16 +108,16 @@ return {
         label = 'Triads',
         grades = {
             [0] = {
-                name = 'Recruit'
+                name = 'Menor'
             },
             [1] = {
-                name = 'Enforcer'
+                name = 'Sicario'
             },
             [2] = {
-                name = 'Shot Caller'
+                name = 'Narcotraficante'
             },
             [3] = {
-                name = 'Boss',
+                name = 'Líder',
                 isboss = true,
                 bankAuth = true
             },

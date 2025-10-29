@@ -1,13 +1,23 @@
-local maxPlayers = GlobalState.MaxPlayers
 local discord = require 'config.client'.discord
 
 if not discord.enabled then return end
 
+local function updatePresence()
+    local name = GetPlayerName(PlayerId())
+    local serverId = GetPlayerServerId(PlayerId())
+    SetRichPresence(('Nombre: %s | ID: %d'):format(name, serverId))
+end
+
 AddStateBagChangeHandler('PlayerCount', '', function(bagName, _, value)
     if bagName == 'global' and value then
-        SetRichPresence(('Players %s/%s'):format(value, maxPlayers))
+        updatePresence()
     end
 end)
+
+-- CreateThread(function()
+--     Wait(1000)
+--     updatePresence()
+-- end)
 
 SetDiscordAppId(discord.appId)
 SetDiscordRichPresenceAsset(discord.largeIcon.icon)

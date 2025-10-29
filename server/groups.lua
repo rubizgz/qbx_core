@@ -12,13 +12,13 @@ local gangs = require 'shared.gangs'
 
 for name in pairs(jobs) do
     if name ~= name:lower() then
-        lib.print.error(('jobs.lua contains a job name with capital letters: %s'):format(name))
+        lib.print.error(('jobs.lua contiene un nombre de trabajo con letras mayúsculas: %s'):format(name))
     end
 end
 
 for name in pairs(gangs) do
     if name ~= name:lower() then
-        lib.print.error(('gangs.lua contains a gang name with capital letters: %s'):format(name))
+        lib.print.error(('gangs.lua contiene un nombre de pandilla con letras mayúsculas: %s'):format(name))
     end
 end
 
@@ -45,7 +45,7 @@ end
 ---@param type string
 local function convertGroupsToPlainText(groupTable, type)
     local lines = {
-        '---' .. type .. ' names must be lower case (top level table key)',
+        '---' .. type .. ' Los nombres deben estar en minúsculas (clave de tabla de nivel superior)',
         '---@type table<string, ' .. type .. '>',
         'return {'
     }
@@ -117,12 +117,12 @@ end
 function CreateJob(jobName, job, commitToFile)
     -- Validate jobName
     if type(jobName) ~= "string" or jobName:match("^%s*$") then
-        return false, "Invalid parameter: jobName must be a non-empty string."
+        return false, "Parámetro no válido: jobName debe ser una cadena no vacía."
     end
 
     -- Validate job table
     if type(job) ~= "table" then
-        return false, "Invalid parameter: job must be a table."
+        return false, "Parámetro no válido: job debe ser una tabla."
     end
 
     -- Store the job data
@@ -138,7 +138,7 @@ function CreateJob(jobName, job, commitToFile)
         SaveResourceFile(GetCurrentResourceName(), 'shared/jobs.lua', modifiedData, -1)
     end
 
-    return true, string.format("Job '%s' created/updated successfully.", jobName)
+    return true, string.format("El trabajo '%s' se ha creado o actualizado correctamente.", jobName)
 end
 
 exports('CreateJob', CreateJob)
@@ -152,7 +152,7 @@ exports('CreateJob', CreateJob)
 function CreateJobs(newJobs, commitToFile)
     -- Validate input type
     if type(newJobs) ~= "table" then
-        return false, "Invalid parameter: newJobs must be a table."
+        return false, "Parámetro no válido: newJobs debe ser una tabla."
     end
 
     local hasError = false
@@ -163,13 +163,13 @@ function CreateJobs(newJobs, commitToFile)
         local success, errMsg = CreateJob(jobName, job)
         if not success then
             hasError = true
-            table.insert(failedJobs, string.format("%s (%s)", jobName, errMsg or "Unknown error"))
+            table.insert(failedJobs, string.format("%s (%s)", jobName, errMsg or "Error desconocido"))
         end
     end
 
     -- Return failure message if any jobs failed
     if hasError then
-        return false, string.format("Some jobs failed to create: %s", table.concat(failedJobs, ", "))
+        return false, string.format("Algunos trabajos no se pudieron crear: %s", table.concat(failedJobs, ", "))
     end
 
     -- Commit the job data to the shared file
@@ -178,7 +178,7 @@ function CreateJobs(newJobs, commitToFile)
         SaveResourceFile(GetCurrentResourceName(), 'shared/jobs.lua', modifiedData, -1)
     end
 
-    return true, "All jobs created/updated successfully."
+    return true, "Todos los trabajos se han creado o actualizado correctamente."
 end
 
 exports('CreateJobs', CreateJobs)
@@ -342,7 +342,7 @@ exports('UpsertGangData', upsertGangData)
 ---@param commitToFile boolean Whether to commit the job data to the shared file.
 local function upsertJobGrade(name, grade, data, commitToFile)
     if not jobs[name] then
-        lib.print.error('Job must exist to edit grades. Not found:', name)
+        lib.print.error('Debe existir un trabajo para editar calificaciones. No se encontró:', name)
         return
     end
     jobs[name].grades[grade] = data
@@ -362,7 +362,7 @@ exports('UpsertJobGrade', upsertJobGrade)
 ---@param commitToFile boolean Whether to commit the gang data to the shared file.
 local function upsertGangGrade(name, grade, data, commitToFile)
     if not gangs[name] then
-        lib.print.error('Gang must exist to edit grades. Not found:', name)
+        lib.print.error('Debe existir una banda para editar calificaciones. No se encontró:', name)
         return
     end
     gangs[name].grades[grade] = data
@@ -381,7 +381,7 @@ exports('UpsertGangGrade', upsertGangGrade)
 ---@param commitToFile boolean Whether to commit the job data to the shared file.
 local function removeJobGrade(name, grade, commitToFile)
     if not jobs[name] then
-        lib.print.error('Job must exist to edit grades. Not found:', name)
+        lib.print.error('Debe existir un trabajo para editar calificaciones. No se encontró:', name)
         return
     end
     jobs[name].grades[grade] = nil
@@ -400,7 +400,7 @@ exports('RemoveJobGrade', removeJobGrade)
 ---@param commitToFile boolean Whether to commit the gang data to the shared file.
 local function removeGangGrade(name, grade, commitToFile)
     if not gangs[name] then
-        lib.print.error('Gang must exist to edit grades. Not found:', name)
+        lib.print.error('Debe existir una banda para editar calificaciones. No se encontró:', name)
         return
     end
     gangs[name].grades[grade] = nil

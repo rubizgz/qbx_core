@@ -160,7 +160,7 @@ if isServer then
     end
 
 
-    local discordLink = GetConvar('qbx:discordlink', 'discord.gg/qbox')
+    local discordLink = GetConvar('qbx:discordlink', 'discord.gg/YVcRQtKQxr')
     ---@deprecated use setKickReason or deferrals for connecting players, and the DropPlayer native directly otherwise
     --Kick Player
     ---@param source Source
@@ -168,7 +168,7 @@ if isServer then
     ---@param setKickReason? fun(reason: string)
     ---@param deferrals? Deferrals
     function KickWithReason(source, reason, setKickReason, deferrals) -- luacheck: ignore
-        reason = ('\n %s \n 🔸 Check our Discord for further information: %s'):format(reason, discordLink)
+        reason = ('\n %s \n 🔸 Visite nuestro Discord para obtener más información: %s'):format(reason, discordLink)
         if setKickReason then
             setKickReason(reason)
         end
@@ -762,7 +762,7 @@ else
             return vec3(coords.x, coords.y, groundZ)
         end
 
-        lib.print.verbose('Couldn\'t find Ground Z Coordinates given 3D Coordinates:', coords)
+        lib.print.verbose('No se pudieron encontrar las coordenadas Z del suelo dadas las coordenadas 3D:', coords)
         return coords
     end
 

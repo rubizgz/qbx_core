@@ -3,17 +3,17 @@ function AddDeprecatedFunctions(player)
 
     ---@deprecated call ox_inventory instead
     function player.Functions.GetCardSlot()
-        error('player.Functions.GetCardSlot is unsupported. Call ox_inventory directly')
+        error('player.Functions.GetCardSlot no es compatible. (Utilice ox_inventory en su lugar)')
     end
 
     ---@deprecated player.Functions.SetMetaData instead
     function player.Functions.AddField()
-        error('player.Functions.AddField is unsupported. Use player.Functions.SetMetaData instead')
+        error('player.Functions.AddField no es compatible. (Utilice player.Functions.SetMetaData en su lugar)')
     end
 
     ---@deprecated
     function player.Functions.AddMethod()
-        error('player.Functions.AddMethod is unsupported')
+        error('player.Functions.AddMethod no es compatible')
     end
 
     return player
@@ -24,20 +24,20 @@ local playerObj = {}
 ---@deprecated ox_inventory automatically saves
 ---@param source Source
 function playerObj.SaveInventory(source) -- luacheck: ignore
-    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory is not compatible with qbx_core. use ox_inventory instead')
+    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory no es compatible con qbx_core. Utilice ox_inventory en su lugar')
 end
 
 ---@deprecated ox_inventory automatically saves
 ---@param playerData PlayerData
 function playerObj.SaveOfflineInventory(playerData) -- luacheck: ignore
-    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory is not compatible with qbx_core. use ox_inventory instead')
+    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory no es compatible con qbx_core. Utilice ox_inventory en su lugar')
 end
 
 ---@deprecated call ox_inventory exports directly
 ---@param items any[]
 ---@return number?
 function playerObj.GetTotalWeight(items) -- luacheck: ignore
-    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory is not compatible with qbx_core. use ox_inventory instead')
+    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory no es compatible con qbx_core. Utilice ox_inventory en su lugar')
 end
 
 ---@deprecated call ox_inventory exports directly
@@ -45,7 +45,7 @@ end
 ---@param itemName string
 ---@return integer[]? slots
 function playerObj.GetSlotsByItem(items, itemName) -- luacheck: ignore
-    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory is not compatible with qbx_core. use ox_inventory instead')
+    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory no es compatible con qbx_core. Utilice ox_inventory en su lugar')
 end
 
 ---@deprecated call ox_inventory exports directly
@@ -53,7 +53,7 @@ end
 ---@param itemName string
 ---@return integer? slot
 function playerObj.GetFirstSlotByItem(items, itemName) -- luacheck: ignore
-    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory is not compatible with qbx_core. use ox_inventory instead')
+    assert(GetResourceState('qb-inventory') ~= 'started', 'qb-inventory no es compatible con qbx_core. Utilice ox_inventory en su lugar')
 end
 
 ---@param source Source
@@ -72,7 +72,7 @@ end
 
 ---@deprecated unsupported. Call Login or CreatePlayer
 function playerObj.CheckPlayerData()
-    error('Unsupported. Call Login or CreatePlayer')
+    error('No compatible. (Utilice Call Login o CreatePlayer en su lugar)')
 end
 
 ---On player logout

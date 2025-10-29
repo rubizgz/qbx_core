@@ -46,9 +46,9 @@ lib.callback.register('qbx_core:server:loadCharacter', function(source, citizenI
         webhook = config.logging.webhook['joinleave'],
         event = 'Loaded',
         color = 'green',
-        message = ('**%s** (%s |  ||%s|| | %s | %s | %s) loaded'):format(GetPlayerName(source), GetPlayerIdentifierByType(source, 'discord') or 'undefined', GetPlayerIdentifierByType(source, 'ip') or 'undefined', GetPlayerIdentifierByType(source, 'license2') or GetPlayerIdentifierByType(source, 'license') or 'undefined', citizenId, source)
+        message = ('**%s** (%s |  ||%s|| | %s | %s | %s) cargado'):format(GetPlayerName(source), GetPlayerIdentifierByType(source, 'discord') or 'undefined', GetPlayerIdentifierByType(source, 'ip') or 'undefined', GetPlayerIdentifierByType(source, 'license2') or GetPlayerIdentifierByType(source, 'license') or 'undefined', citizenId, source)
     })
-    lib.print.info(('%s (Citizen ID: %s ID: %s) has successfully loaded!'):format(GetPlayerName(source), citizenId, source))
+    lib.print.info(('%s (ID de ciudadano: %s ID: %s) se ha cargado correctamente.'):format(GetPlayerName(source), citizenId, source))
 end)
 
 ---@param data unknown
@@ -62,7 +62,7 @@ lib.callback.register('qbx_core:server:createCharacter', function(source, data)
 
     giveStarterItems(source)
 
-    lib.print.info(('%s has created a character'):format(GetPlayerName(source)))
+    lib.print.info(('%s ha creado un personaje.'):format(GetPlayerName(source)))
     return newData
 end)
 

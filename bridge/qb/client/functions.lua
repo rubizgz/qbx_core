@@ -417,10 +417,10 @@ function functions.SetVehicleProperties(vehicle, props)
     props.modRoofLivery = props.modRoofLivery or props.liveryRoof
 
     --- lib.setVehicleProperties copied and pasted from Overextended below so that we can remove the error so that setting properties is best effort
-    assert(DoesEntityExist(vehicle), ('Unable to set vehicle properties for "%s" (entity does not exist)'):format(vehicle))
+    assert(DoesEntityExist(vehicle), ('No se pueden establecer las propiedades del vehículo para "%s" (la entidad no existe)'):format(vehicle))
 
     if NetworkGetEntityIsNetworked(vehicle) and NetworkGetEntityOwner(vehicle) ~= cache.playerId then
-        lib.print.warn('setting vehicle properties on non entity owner client. This may cause certain properties to fail to set. entity:', vehicle)
+        lib.print.warn('Configuración de las propiedades del vehículo en un cliente que no es propietario de la entidad. Esto puede provocar que ciertas propiedades no se configuren. Entidad:', vehicle)
     end
 
     local colorPrimary, colorSecondary = GetVehicleColours(vehicle)
@@ -851,7 +851,7 @@ functions.GetZoneAtCoords = qbx.getZoneName
 ---@deprecated use qbx.getCardinalDirection from modules/lib.lua
 functions.GetCardinalDirection = function(entity)
     if not entity or not DoesEntityExist(entity) then
-        return 'Cardinal Direction Error'
+        return 'Error de dirección cardinal'
     end
 
     return qbx.getCardinalDirection(entity)
@@ -886,7 +886,7 @@ functions.GetGroundZCoord = function(coords)
         return vec3(coords.x, coords.y, groundZ)
     end
 
-    lib.print.verbose('Couldn\'t find Ground Z Coordinates given 3D Coordinates:', coords)
+    lib.print.verbose('No se pudieron encontrar las coordenadas Z del suelo dadas las coordenadas 3D:', coords)
     return coords
 end
 

@@ -391,7 +391,7 @@ lib.addCommand('ooc', {
                 exports.chat:addMessage(v--[[@as Source]], {
                     color = { 0, 0, 255},
                     multiline = true,
-                    args = {('Proximity OOC | %s'):format(GetPlayerName(source)), message}
+                    args = {('Proximidad OOC | %s'):format(GetPlayerName(source)), message}
                 })
                 logger.log({
                     source = 'qbx_core',
@@ -399,7 +399,7 @@ lib.addCommand('ooc', {
                     event = 'OOC',
                     color = 'white',
                     tags = config.logging.role,
-                    message = ('**%s** (CitizenID: %s | ID: %s) **Message:** %s'):format(GetPlayerName(source), player.PlayerData.citizenid, source, message)
+                    message = ('**%s** (ID de ciudadano: %s | ID: %s) **Mensaje:** %s'):format(GetPlayerName(source), player.PlayerData.citizenid, source, message)
                 })
             end
         end

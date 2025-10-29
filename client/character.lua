@@ -178,7 +178,7 @@ local function characterDialog()
         required = true,
         icon = 'user-shield',
         label = locale('info.nationality'),
-        default = 'American',
+        default = 'Spanish',
         searchable = true,
         options = nationalities
     } or {
@@ -395,18 +395,18 @@ local function chooseCharacter()
         options[i] = {
             title = character and ('%s %s - %s'):format(character.charinfo.firstname, character.charinfo.lastname, character.citizenid) or locale('info.multichar_new_character', i),
             metadata = character and {
-                Name = name,
-                Gender = character.charinfo.gender == 0 and locale('info.char_male') or locale('info.char_female'),
-                Birthdate = character.charinfo.birthdate,
-                Nationality = character.charinfo.nationality,
-                ['Account Number'] = character.charinfo.account,
-                Bank = lib.math.groupdigits(character.money.bank),
-                Cash = lib.math.groupdigits(character.money.cash),
-                Job = character.job.label,
-                ['Job Grade'] = character.job.grade.name,
-                Gang = character.gang.label,
-                ['Gang Grade'] = character.gang.grade.name,
-                ['Phone Number'] = character.charinfo.phone
+                Nombre = name,
+                ['Género'] = character.charinfo.gender == 0 and locale('info.char_male') or locale('info.char_female'),
+                ['Fecha de nacimiento'] = character.charinfo.birthdate,
+                Nacionalidad = character.charinfo.nationality,
+                ['Número de cuenta'] = character.charinfo.account,
+                Banco = lib.math.groupdigits(character.money.bank),
+                Efectivo = lib.math.groupdigits(character.money.cash),
+                Trabajo = character.job.label,
+                ['Grado laboral'] = character.job.grade.name,
+                Banda = character.gang.label,
+                ['Grado de pandilla'] = character.gang.grade.name,
+                ['Número de teléfono'] = character.charinfo.phone
             } or nil,
             icon = 'user',
             onSelect = function()

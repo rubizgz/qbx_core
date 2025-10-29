@@ -67,7 +67,7 @@ CreateThread(function()
             if gameName and gameName ~= 'CARNOTFOUND' then
                 AddTextEntryByHash(joaat(gameName), v.name)
             else
-                lib.print.warn(('Could not find gameName value in vehicles.meta for vehicle model %s'):format(v.model))
+                lib.print.warn(('No se pudo encontrar el valor gameName en vehicles.meta para el modelo de vehículo %s'):format(v.model))
             end
         end
     end

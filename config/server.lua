@@ -5,9 +5,9 @@ return {
         ---@alias MoneyType 'cash' | 'bank' | 'crypto'
         ---@alias Money {cash: number, bank: number, crypto: number}
         ---@type Money
-        moneyTypes = { cash = 500, bank = 5000, crypto = 0 }, -- type = startamount - Add or remove money types for your server (for ex. blackmoney = 0), remember once added it will not be removed from the database!
+        moneyTypes = { cash = 500, bank = 4500, crypto = 0 }, -- type = startamount - Add or remove money types for your server (for ex. blackmoney = 0), remember once added it will not be removed from the database!
         dontAllowMinus = { 'cash', 'crypto' }, -- Money that is not allowed going in minus
-        paycheckTimeout = 10, -- The time in minutes that it will give the paycheck
+        paycheckTimeout = 15, -- The time in minutes that it will give the paycheck
         paycheckSociety = false -- If true paycheck will come from the society account that the player is employed at
     },
 
@@ -30,7 +30,7 @@ return {
             },
             AccountNumber = {
                 valueFunction = function()
-                    return 'US0' .. math.random(1, 9) .. 'QBX' .. math.random(1111, 9999) .. math.random(1111, 9999) .. math.random(11, 99)
+                    return 'EU0' .. math.random(1, 9) .. '-' .. math.random(1111, 9999) .. math.random(1111, 9999) .. math.random(11, 99)
                 end,
             },
             PhoneNumber = {
@@ -45,7 +45,7 @@ return {
             },
             WalletId = {
                 valueFunction = function()
-                    return 'QB-' .. math.random(11111111, 99999999)
+                    return 'ZGZ-' .. math.random(11111111, 99999999)
                 end,
             },
             SerialNumber = {
@@ -82,10 +82,10 @@ return {
     server = {
         pvp = true, -- Enable or disable pvp on the server (Ability to shoot other players)
         closed = false, -- Set server closed (no one can join except people with ace permission 'qbadmin.join')
-        closedReason = 'Server Closed', -- Reason message to display when people can't join the server
+        closedReason = 'El servidor está cerrado.', -- Reason message to display when people can't join the server
         whitelist = false, -- Enable or disable whitelist on the server
         whitelistPermission = 'admin', -- Permission that's able to enter the server when the whitelist is on
-        discord = '', -- Discord invite link
+        discord = 'https://discord.gg/YVcRQtKQxr', -- Discord invite link
         checkDuplicateLicense = true, -- Check for duplicate rockstar license on join
         ---@deprecated use cfg ACE system instead
         permissions = { 'god', 'admin', 'mod' }, -- Add as many groups as you want here after creating them in your server.cfg
